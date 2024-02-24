@@ -61,7 +61,7 @@ const useDeletePropertyMutation = () => {
     },
     onSuccess(data, variable) {
       toast.success(`delete ${variable.name} successfully.`);
-      queryClient.invalidateQueries({ queryKey: ["properties"] });
+      queryClient.invalidateQueries({ queryKey: ["properties-info"] });
     },
     onError(data, variable) {
       toast.error(`failed to delete ${variable.name}`);
