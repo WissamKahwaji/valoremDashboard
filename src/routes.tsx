@@ -17,6 +17,11 @@ import AddProperty from "./pages/properties/AddProperty";
 import PropertyDetails from "./pages/properties/PropertyDetails";
 import UnAuthorized from "./pages/unAuthorized";
 import SignInPage from "./pages/signin";
+import OurTeamsInfoPage from "./pages/ourTeams";
+import AddEditTeamMember from "./pages/ourTeams/AddEditTeamMember";
+import InterProperties from "./pages/inter_properties";
+import InterPropertyDetails from "./pages/inter_properties/InterPropertyDetails";
+import TestPage from "./pages/TestPage";
 
 const Routes = () => {
   const routes = createBrowserRouter(
@@ -28,12 +33,31 @@ const Routes = () => {
         >
           <Route path="properties" element={<Properties />}></Route>
           <Route path="properties/:id" element={<PropertyDetails />}></Route>
+
           <Route path="add-property" element={<AddProperty />}></Route>
+          <Route path="inter-properties" element={<InterProperties />}></Route>
+          <Route
+            path="inter-properties/:id"
+            element={<InterPropertyDetails />}
+          ></Route>
+          <Route
+            path="add-inter-property"
+            element={<InterPropertyDetails />}
+          ></Route>
+
+          <Route path="test" element={<TestPage />}></Route>
+
           <Route path="services" element={<OurServices />}></Route>
           <Route path="add-service" element={<AddServicePage />}></Route>
           <Route path="service/:id" element={<ServiceDetails />}></Route>
           <Route path="contact" element={<ContactUs />}></Route>
           <Route path="about-us" element={<AboutUs />}></Route>
+          <Route path="our-teams" element={<OurTeamsInfoPage />}></Route>
+          <Route path="add-team" element={<AddEditTeamMember />}></Route>
+          <Route
+            path="edit-team/:teamItemId"
+            element={<AddEditTeamMember />}
+          ></Route>
         </Route>
         <Route path="/sign-in" element={<SignInPage />} />
       </Route>

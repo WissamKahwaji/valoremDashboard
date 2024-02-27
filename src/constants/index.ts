@@ -4,6 +4,7 @@ import InfoRoundedIcon from "@mui/icons-material/InfoRounded";
 import HomeRepairServiceRoundedIcon from "@mui/icons-material/HomeRepairServiceRounded";
 import AddBusinessRoundedIcon from "@mui/icons-material/AddBusinessRounded";
 import AddToPhotosRoundedIcon from "@mui/icons-material/AddToPhotosRounded";
+import GroupsRoundedIcon from "@mui/icons-material/GroupsRounded";
 const NAV_LINKS = [
   {
     name: "properties",
@@ -14,6 +15,11 @@ const NAV_LINKS = [
     name: "add-property",
     link: "/add-property",
     icon: AddBusinessRoundedIcon,
+  },
+  {
+    name: "inter-properties",
+    link: "/inter-properties",
+    icon: HomeRoundedIcon,
   },
   {
     name: "services",
@@ -34,6 +40,11 @@ const NAV_LINKS = [
     name: "about-us",
     link: "/about-us",
     icon: InfoRoundedIcon,
+  },
+  {
+    name: "our-teams",
+    link: "/our-teams",
+    icon: GroupsRoundedIcon,
   },
 ];
 

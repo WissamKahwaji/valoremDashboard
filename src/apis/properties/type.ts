@@ -29,7 +29,7 @@ export type PropertyInfo = {
   paymentPlan: string;
   floorPlan: string;
   masterPlan: string;
-  imgs?: [];
+  imgs?: File[] | null;
 };
 
 export type PropertyContent = {

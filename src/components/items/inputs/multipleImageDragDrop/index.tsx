@@ -91,6 +91,7 @@ const MultipleImageDragDropField = ({
         ref={inputRef}
         type="file"
         id={name}
+        name={name}
         className="input-file"
         accept="image/*"
         multiple
