@@ -9,7 +9,9 @@ import LoadingPage from "../loadingPage/LoadingPage";
 import {
   PropertyContent,
   PropertyInfo,
+  subTypeProperty,
   PropertyInfo as TProperty,
+  typeProperty,
 } from "../../apis/properties/type";
 import {
   Box,
@@ -24,6 +26,8 @@ import { FieldArray, Form, Formik, FormikHelpers } from "formik";
 import ImageDragDropField from "../../components/items/inputs/imageDragDropFeild";
 import DeleteIcon from "@mui/icons-material/Delete";
 import LoadingButton from "../../components/items/buttons/loadingButtons/LoadingButton";
+import MuiTypeRadioButton from "../../components/items/buttons/muiRadioButton/MuiTypeRadioButton";
+import MuiSubTypeRadioButton from "../../components/items/buttons/muiRadioButton/MuiSubTypeRadioButton";
 
 const PropertyDetails = () => {
   const { id } = useParams<Params>();
@@ -66,6 +70,8 @@ const PropertyDetails = () => {
     paymentPlan: property?.paymentPlan ?? "",
     floorPlan: property?.floorPlan ?? "",
     masterPlan: property?.masterPlan ?? "",
+    type: property?.type,
+    subType: property?.subType,
   };
   const handleSubmit = (
     values: PropertyInfo,
@@ -121,6 +127,49 @@ const PropertyDetails = () => {
                   oldImg={property?.coverImg! as string}
                 />
               </Grid>
+              <Grid item xs={12} md={6}>
+                <MuiTypeRadioButton
+                  label={"Property Type"}
+                  val={values.type}
+                  onChange={value => {
+                    setFieldValue("type", value.toString());
+                    if (value.toString() === typeProperty.COMMERCIAL) {
+                      setFieldValue("subType", undefined);
+                    }
+                  }}
+                  options={[
+                    {
+                      label: typeProperty.COMMERCIAL,
+                      value: typeProperty.COMMERCIAL,
+                    },
+                    {
+                      label: typeProperty.RESIDENTIAL,
+                      value: typeProperty.RESIDENTIAL,
+                    },
+                  ]}
+                />
+              </Grid>
+              {values.type === typeProperty.RESIDENTIAL && (
+                <Grid item xs={12} md={6}>
+                  <MuiSubTypeRadioButton
+                    label={"Property SubType"}
+                    val={values.subType}
+                    onChange={value => {
+                      setFieldValue("subType", value.toString());
+                    }}
+                    options={[
+                      {
+                        label: subTypeProperty.OFF_PLAN,
+                        value: subTypeProperty.OFF_PLAN,
+                      },
+                      {
+                        label: subTypeProperty.SECONDARY,
+                        value: subTypeProperty.SECONDARY,
+                      },
+                    ]}
+                  />
+                </Grid>
+              )}
               <Grid item xs={12}>
                 <TextField
                   name="name"

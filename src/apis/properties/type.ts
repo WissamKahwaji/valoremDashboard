@@ -12,6 +12,8 @@ export type PropertyInfo = {
   gallery?: string[];
   bedrooms: number;
   bathrooms: number;
+  type?: typeProperty | undefined;
+  subType?: subTypeProperty | undefined;
   space: string;
   breifDetails: [
     {
@@ -43,3 +45,13 @@ export type PropertyContent = {
   ];
   imgs: string[];
 };
+
+export enum typeProperty {
+  COMMERCIAL = "commercial",
+  RESIDENTIAL = "residential",
+}
+
+export enum subTypeProperty {
+  OFF_PLAN = "off plan",
+  SECONDARY = "secondary projects",
+}

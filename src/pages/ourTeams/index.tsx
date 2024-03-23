@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   useGetOurTeamInfoQuery,
   useReOrderTeamMutation,
@@ -26,9 +26,13 @@ import { useNavigate } from "react-router-dom";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 const OurTeamsInfoPage = () => {
-  const { data: teamsInfo } = useGetOurTeamInfoQuery();
+  const { data: teamsInfo, isError, isLoading } = useGetOurTeamInfoQuery();
   const { mutate: reOrderTeam } = useReOrderTeamMutation();
-
+  useEffect(() => {
+    if (teamsInfo) {
+      setTeamsState(teamsInfo);
+    }
+  }, [teamsInfo]);
   const navigate = useNavigate();
   const [openDeleteTeamDialog, setOpenDeleteTeamDialog] = useState<{
     [key: string]: boolean;
@@ -69,6 +73,9 @@ const OurTeamsInfoPage = () => {
       [teamId]: false,
     }));
   };
+
+  if (isLoading) return <div>Loading .....</div>;
+  if (isError) return <div></div>;
 
   return (
     <DragDropContext onDragEnd={handleDragDrop}>
